@@ -5,6 +5,8 @@ import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.concurrent.CompletableFuture;
 
+import javax.swing.SwingUtilities;
+
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
@@ -63,7 +65,7 @@ public class MirWriteRegisterProgramNodeContribution implements ProgramNodeContr
 
 	@Override
 	public void openView() {
-		CompletableFuture.runAsync(new Runnable() {
+		SwingUtilities.invokeLater(new Runnable() {
 			@Override
 			public void run() {
 				view.updateRegistersComboBox();
@@ -74,7 +76,7 @@ public class MirWriteRegisterProgramNodeContribution implements ProgramNodeContr
 					view.setValue(getDoubleValue().toString());
 				}								
 			}
-		});
+		});		
 	}
 
 	@Override

@@ -27,6 +27,7 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 
 import com.mir.urcap.MiRintegration.common.UIComponentFactory;
 import com.mir.urcap.MiRintegration.style.Style;
@@ -247,12 +248,12 @@ public class MirReadRegisterProgramNodeView implements SwingProgramNodeView<MirR
 		clearInputVariableName();
 		clearErrors();
 		updateVariablesComboBox();
-		CompletableFuture.runAsync(new Runnable() {
+		SwingUtilities.invokeLater(new Runnable() {
 			@Override
 			public void run() {
 				updateRegistersComboBox();				
 			}
-		});
+		});		
 	}
 	
 	public void setNewVariable(String variable) {
